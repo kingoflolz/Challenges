@@ -26,7 +26,7 @@ class Board:
         if abs(x - o) > 1:
             return False
 
-        return self.validate_winstate(Piece.X) and self.validate_winstate(Piece.O)
+        return self.validate_winstate(Piece.X) + self.validate_winstate(Piece.O) < 2
 
     def validate_winstate(self, piece):
         board = self.board.copy()
@@ -41,7 +41,7 @@ class Board:
                     board[p] = 0
                 wins += 1
 
-        return wins < 2
+        return wins
 
     def __str__(self):
         p = []
